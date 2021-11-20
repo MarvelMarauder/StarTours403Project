@@ -86,9 +86,9 @@ WSGI_APPLICATION = 'startours.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'registration',
+        'NAME': 'starwarstravel',
         'USER' : 'postgres',
-        'PASSWORD' : '',
+        'PASSWORD' : 'admin',
         'HOST' : 'localhost',
     }
 }

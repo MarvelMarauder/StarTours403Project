@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Student
+from .models import Character
 
 # Main travel page view
 def travelPageView(request) :
@@ -10,7 +10,7 @@ def travelPageView(request) :
     return render(request, 'travelpages/travelpages.html', context)
 
 def studentPageView(request) :
-    data = Student.objects.all()
+    data = Character.objects.all()
 
     context = {
         "our_students" : data
