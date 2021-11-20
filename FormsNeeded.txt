@@ -1,0 +1,39 @@
+Authors: Taylor Bullock, Christian Bennett, Taylor Anderson, Ben Craythorne
+
+Description: a list of the main forms we will need in our project. Since our project is going to be a 
+star wars-themed travel site, many of our forms will be similar in scope to the example we went over in class.
+The forms will be divided by application and webpage.
+
+Welcome Pages
+    Index Page:
+        There will be a main landing page that contains the information about the travel site.
+        Form 1: allows the user to input information about themselves to log in and access the rest of the
+        site.
+    About page:
+        This page will contain information about us, the creators
+        Form 1: take the user to the main page.
+
+TravelPages
+    Travel Page:
+        This page will contain a list of all available trips
+        Form 1: for each trip, allowing the user to go to the page about that specific trip
+        Form 2: for each planet the trip is going to, for the user to find out more information about the planet they are
+        going to visit.
+        Form 3: takes user back to home page
+
+    Trip Page:
+        This page will contain more specific information about the trip, its duration and other important information
+        Form 1: allows the user to learn more about the planet they will be going to.
+        Form 2: takes user back to home page
+
+InfoPages: 
+    Planet Page: 
+        This page is where the user can find out more information about the planet they will be visiting. There will be a list
+        of characters that call that planet home.
+        Form 1: This form will allow users to click on links to take them to more information about the character on that planet.
+        Form 2: takes user back to home page
+    
+    Character Page:
+        This page is for the different characters that will be on the planets the people wish to visit.
+        Form 1: more info about the planet they live on 
+        Form 2: takes user back to home page
