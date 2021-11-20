@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+<div class = 'container'>
+    {% for stud in our_students %}
+    <p>
+        {{ stud.first_name }}
+    </p>
+    {% endfor %}
+</div>
+{% endblock %}

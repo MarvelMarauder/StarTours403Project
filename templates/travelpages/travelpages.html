@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+            <p>Welcome to our available trips off-world!</p>
+            <h4>Places to visit include:</h4>
+            <ul>
+             {% for sName in places_to_visit %} 
+                <li> <form action='/travelpages/{{sName}}/8'> <button>{{ sName }} </button> <form/> </li>
+            {% endfor %} 
+ {% endblock %} 
