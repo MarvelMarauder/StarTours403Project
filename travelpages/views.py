@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Character
+from .models import Character, Trip
 
 # Main travel page view
 def travelPageView(request) :
+    data = Trip.objects.all
+
     context = {
-        "places_to_visit" : ["Arenal Volcano", "Manual Antonio National Park", "Monteverde Cloud Forest"]
+        "available_trips" : data
     }
     return render(request, 'travelpages/travelpages.html', context)
 
