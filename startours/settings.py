@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'startours.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'star_wars',
+        'NAME': 'star_wars2',
         'USER' : 'postgres',
         'PASSWORD' : 'usingwindowsisgr8',
         'HOST' : 'localhost',

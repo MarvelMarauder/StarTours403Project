@@ -73,6 +73,19 @@ class Customer(models.Model): #specify all of the attributes in the database
         self.last_name = self.last_name.upper()
         super(Customer, self).save() #call the original save method
 
+class Trip(models.Model):
+    planet = models.ForeignKey(TravelPlanet, default="Tatooine", blank = False, on_delete=models.CASCADE)
+    duration = models.IntegerField()
+    dateDepart = models.DateTimeField(auto_now=False, auto_now_add=False)
+
+    def __str__(self):
+        return self.trip_name
+
+    @property
+    def trip_name(self) :
+        return '%s' % ("Trip to " + self.planet.name)
+
+
 #make sure the travelsites app is referenced in the settings.py 
 
 
