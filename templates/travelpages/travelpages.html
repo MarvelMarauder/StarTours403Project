@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
             <p>Welcome to our available trips off-world!</p>
-            <h4>Places to visit include:</h4>
-            <ul>
-             {% for sName in places_to_visit %} 
-                <li> <form action='/travelpages/{{sName}}/8'> <button>{{ sName }} </button> <form/> </li>
-            {% endfor %} 
+            <h4>Browse through our list of available trips:</h4>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Duration</th>
+                    <th>Departure Date</th>
+                </tr>
+                <tr>
+                    {% for sName in available_trips %}
+                    <td>
+                        <form action='/travelpages/{{sName}}/8'> 
+                        <button>{{ sName }} </button> 
+                        <form/>
+                    </td> 
+                    <td>
+                        {{ sName.duration }}
+                    </td>
+                    <td>
+                        {{ sName.dateDepart }}
+                    </td>
+                </tr>
+                {% endfor %}
+                
+            </table>
  {% endblock %} 
