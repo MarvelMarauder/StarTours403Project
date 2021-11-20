@@ -11,37 +11,37 @@ from django.db.models.deletion import CASCADE
 # Create your models here.
 class TravelPlanet(models.Model):
     name = models.CharField(max_length=30)
-    rotation_period = models.CharField(max_length=10)
-    orbital_period = models.CharField(max_length=10)
-    diameter = models.CharField(max_length=15)
-    climate = models.CharField(max_length=15)
-    gravity = models.CharField(max_length=20)
-    terrain = models.CharField(max_length=20)
-    surface_water = models.CharField(max_length=20)
-    population = models.CharField(max_length=20)
-    created_date = models.CharField(max_length=20)
-    updated_date = models.CharField(max_length=20)
-    url = models.CharField(max_length=30)
-    #planetfakeid = models.CharField(max_length=20)
+    rotation_period = models.CharField(max_length=10, null=True)
+    orbital_period = models.CharField(max_length=10, default='', null=True)
+    diameter = models.CharField(max_length=30, null=True)
+    climate = models.CharField(max_length=30, null=True)
+    gravity = models.CharField(max_length=100, null=True)
+    terrain = models.CharField(max_length=100, null=True)
+    surface_water = models.CharField(max_length=100, null=True)
+    population = models.CharField(max_length=100, null=True)
+    created_date = models.DateTimeField(null=True)
+    updated_date = models.DateTimeField(null=True)
+    url = models.CharField(max_length=100, null=True)
+    planetfakeid = models.CharField(max_length=20, null=True)
     # will have ID field and description field
 
     def __str__(self):
         return (self.name) #returns some value rather than just a record in the database
 
 class Character(models.Model):
-    name = models.CharField(max_length=30)
-    height = models.CharField(max_length=4)
-    mass = models.CharField(max_length=5)
-    hair_color = models.CharField(max_length=30)
-    skin_color = models.CharField(max_length=30)
-    eye_color = models.CharField(max_length=30, blank=True)
-    birth_year = models.CharField(max_length=10, blank=True)
-    gender = models.CharField(max_length=15, blank=True)
-    planet_id = models.ForeignKey(TravelPlanet, on_delete=models.CASCADE) # here is the reference to the home planet
-    created_date = models.CharField(max_length=30, blank=True)
-    updated_date = models.CharField(max_length=30, blank=True)
-    url = models.CharField(max_length=50, blank=True)
-    #characterfakeID = models.CharField(max_length=5, blank=False)
+    name = models.CharField(max_length=50, null=True)
+    height = models.CharField(max_length=4, null=True)
+    mass = models.CharField(max_length=5, null=True)
+    hair_color = models.CharField(max_length=30, null=True)
+    skin_color = models.CharField(max_length=30, null=True)
+    eye_color = models.CharField(max_length=30, blank=True, null=True)
+    birth_year = models.CharField(max_length=10, blank=True, null=True)
+    gender = models.CharField(max_length=15, blank=True, null=True)
+    planet = models.ForeignKey(TravelPlanet, on_delete=models.CASCADE) # here is the reference to the home planet
+    created_date = models.DateTimeField(null=True)
+    updated_date = models.DateTimeField(null=True)
+    url = models.URLField(null=True)
+    character_fake_id = models.CharField(max_length=5, blank=False)
     #home_planet = models.ForeignKey(TravelPlanet, on_delete=models.CASCADE)
 
     def __str__(self):
