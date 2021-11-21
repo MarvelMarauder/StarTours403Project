@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Character, Trip
+from .models import Character, Trip, TravelPlanet
 
 # Main travel page view
 def travelPageView(request) :
@@ -20,11 +20,10 @@ def studentPageView(request) :
 
     return render(request, 'travelpages/displayStudents.html', context)
 # these will be our pages that will give details about the trip itself
-def aboutPageView(request, trip_name, trip_length) :
+def aboutPageView(request, trip_name) :
+    data = Trip.objects.get(id=trip_name)
     context = {
-    "trip_name" : trip_name,
-    "trip_length" : int(trip_length) + 2,
-    "places_to_visit" : ["Arenal Volcano", "Manual Antonio National Park", "Monteverde Cloud Forest"]
+        "this_trip" : data
     } 
 
     return render(request, 'travelpages/trippage.html', context) 

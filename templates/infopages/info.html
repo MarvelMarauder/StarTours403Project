@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+<table>
+                <tr>
+                    <th>Name</th>
+                    <th>Height</th>
+                    <th>Mass</th>
+                    <th>Hair Color</th>
+                    <th>Skin Color</th>
+                    <th>Eye Color</th>
+                    <th>Birth Year</th>
+                    <th>Gender</th>
+                </tr>
+                <tr>
+                    {% for sName in characters %}
+                    <td>
+                        <form action='/infopages/{{sName.id}}/'> 
+                        <button>{{ sName }} </button> 
+                        <form/>
+                    </td> 
+                    <td>
+                        {{ sName.name }}
+                    </td>
+                    <td>
+                        {{ sName.height }}
+                    </td>
+                    <td>
+                        {{ sName.mass }}
+                    </td>
+                    <td>
+                        {{ sName.hair_color }}
+                    </td>
+                    <td>
+                        {{ sName.skin_color }}
+                    </td>
+                    <td>
+                        {{ sName.eye_color }}
+                    </td>
+                    <td>
+                        {{ sName.birth_year }}
+                    </td>
+                    <td>
+                        {{ sName.gender }}
+                    </td>
+                </tr>
+                {% endfor %}
+{%block content%}
+{% endblock %}
