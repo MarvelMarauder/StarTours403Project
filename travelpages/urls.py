@@ -4,7 +4,7 @@ from .views import aboutPageView
 
 urlpatterns = [
     #connects us to our url functions
-    path("<trip_name>/<trip_length>/", aboutPageView, name = "about"),
+    path("<trip_name>/", aboutPageView, name = "abouttrip"),
     path("stud/", studentPageView, name = 'students'),
     path("", travelPageView, name="travelpages"),
 ]
