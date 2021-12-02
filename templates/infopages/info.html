@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{%block content%}
 <table>
                 <tr>
                     <th>Name</th>
@@ -21,28 +22,8 @@
                     <td>
                         {{ sName.name }}
                     </td>
-                    <td>
-                        {{ sName.height }}
-                    </td>
-                    <td>
-                        {{ sName.mass }}
-                    </td>
-                    <td>
-                        {{ sName.hair_color }}
-                    </td>
-                    <td>
-                        {{ sName.skin_color }}
-                    </td>
-                    <td>
-                        {{ sName.eye_color }}
-                    </td>
-                    <td>
-                        {{ sName.birth_year }}
-                    </td>
-                    <td>
-                        {{ sName.gender }}
-                    </td>
+                    
                 </tr>
                 {% endfor %}
-{%block content%}
+
 {% endblock %}

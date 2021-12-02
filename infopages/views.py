@@ -1,9 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from travelpages.models import Customer, Trip, TravelPlanet, Character
+from .models import Customer2
 
 # main info page for all planets and organisms
 def infoPageView(request) :
-    return render(request, 'infopages/info.html')
+    data = Customer.objects.all()
+    context = {
+        "characters" : data
+    }
+    return render(request, 'infopages/info.html', context)
 
 #page for individual organism information
 def characterPageView(request) :
