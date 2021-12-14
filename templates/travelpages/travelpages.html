@@ -1,29 +1,57 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
-            <p>Welcome to our available trips off-world!</p>
-            <h4>Browse through our list of available trips:</h4>
-            <table>
+{%block content%}
+
+<header class="projects-section" style="background-image: linear-gradient(black,white)">
+            <div class="container d-flex h-100 align-items-center">
+              <div class="mx-auto text-center">
+
+                <div>
+                <h4 style="color:white; font-size:200%">All Trips:</h4><br><br>
+                <table BGCOLOR="#FFFFCC"
+                cellspacing=20 CELLPADDING=10>
                 <tr>
-                    <th>Name</th>
-                    <th>Duration</th>
-                    <th>Departure Date</th>
+                    <th></th>
+                <th>Destination</th>
+                <th>Duration</th>
+                <th>Departure Date</th>
+                <th>Imperial Credits</th>
                 </tr>
                 <tr>
                     {% for sName in available_trips %}
+                    <tr style="border-bottom: 1px solid #ddd; padding: 15px">
                     <td>
-                        <form action='/travelpages/{{sName.id}}/'> 
-                        <button>{{ sName }} </button> 
-                        <form/>
-                    </td> 
+                    <form action='{% url 'abouttrip' trip_id=sName.id %}'>
+                        <button class="btn btn-primary js-scroll-trigger" style="background-color: #5F9EA0; color:white; border:none; padding: 15px 32px; text-decoration: none;display: inline-block; font-size: 16px;">View Trip Info</button> 
+                    </form>
+                    </td>
+                    <td>
+                        {{ sName.planet }}
+                    </td>
                     <td>
                         {{ sName.duration }}
                     </td>
                     <td>
                         {{ sName.dateDepart }}
                     </td>
+                    <td>
+                        {{ sName.cost }}
+                    </td>
                 </tr>
-                {% endfor %}
-                
-            </table>
- {% endblock %} 
+                    {% endfor %}
+            
+                </table>
+            <br><br>
+            </div>
+          </div>
+          </div>
+          </header>
+
+
+
+
+
+
+
+
+  {% endblock %}

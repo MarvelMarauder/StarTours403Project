@@ -1,0 +1,28 @@
+{%extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Customer Info-->
+     <section class="about-section text-center" id="about" style="background-image: url({% static 'img/space.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h4 class="text-white mb-4" style="font-size:400%">{{character.name}}</h4>
+                    <p>
+                    <h3 class="text-white mb-4">Height: {{character.height}}cm<br><br> 
+                            Hair Color: {{character.hair_color | title}}<br><br> 
+                            Skin Color: {{character.skin_color | title}}<br><br>
+                            Eye Color: {{character.eye_color | title}}<br><br>
+                            Birth Year: {{character.birth_year}}<br><br>
+                            Gender: {{character.gender | title}}<br><br>
+                            Home Planet: {{character.planet}}<br>
+                            <form action='{% url 'planet' plan_id=character.planet_id %}'> 
+                                <button class="btn btn-primary js-scroll-trigger" style="background-color: #5F9EA0; color:white; border:none; padding: 15px 32px; text-decoration: none;display: inline-block; font-size: 16px;">View Planet Details</button> 
+                              </form><br>
+                        </h3><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

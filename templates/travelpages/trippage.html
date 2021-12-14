@@ -1,6 +1,33 @@
-{% extends 'base.html' %}
-            {% load static %}
-            {% block content %}
-            <p>The trip to {{this_trip}} will be {{this_trip.duration}} days with airfare.</p>
-            <h4>Places to visit include: </h4>    
-            {% endblock %}  
+{%extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Customer Info-->
+     <section class="about-section text-center" id="about" style="background-image: url({% static 'img/space.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-white mb-4">{{this_trip}}</h2>
+                    <p>
+                        <br><h3 class="text-white mb-4"> Trip Duration: {{this_trip.duration}} Days<br><br> 
+                            Cost: {{this_trip.cost}} Imperial Credits<br><br>
+                            Departure Date: {{this_trip.dateDepart}}<br><br>
+                            <!-- Phone: {{cust.phone}}<br><br>
+                            Favorite Character: {{cust.fav_character}}<br><br> -->
+                            Characters Here: <br><br>
+                            {% for char in chars %}
+                                {{char.name}}<br>
+                                <form action='{% url 'character' char_id=char.id %}'> 
+                                    <button class="btn btn-primary js-scroll-trigger" style="background-color: #5F9EA0; color:white; border:none; padding: 15px 32px; text-decoration: none;display: inline-block; font-size: 16px;">View Character</button> 
+                                  </form><br>
+                            {%endfor%}
+                            <!-- {{cust.cust_trips_id}} -->
+                        </h3><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+

@@ -1,0 +1,33 @@
+{%extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Customer Info-->
+     <section class="about-section text-center" id="about" style="background-image: url({% static 'img/space.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-white mb-4">{{cust.first_name}} {{cust.last_name}}</h2>
+                    <p>
+                        <br><h3 class="text-white mb-4"> User Name: {{cust.user_name}}<br><br> 
+                            Password: {{cust.password}}<br><br>
+                            Email: {{cust.email}}<br><br>
+                            Phone: {{cust.phone}}<br><br>
+                            Favorite Character: {{cust.fav_character}}                      
+                            <form action='{% url 'character' char_id=cust.fav_character_id %}'> 
+                                <button class="btn btn-primary js-scroll-trigger" style="background-color: #5F9EA0; color:white; border:none; padding: 15px 32px; text-decoration: none;display: inline-block; font-size: 16px;">View Favorite Character</button> 
+                              </form>
+                            <br><br>
+                            Trips: <br><br>
+                            {% for trip in ctrip %}
+                                Trip to {{trip.name}}<br>                       
+                            {%endfor%}
+                            
+                            {{cust.cust_trips_id}}
+                        </h3><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

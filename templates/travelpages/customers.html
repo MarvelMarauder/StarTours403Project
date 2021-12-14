@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+
+<header class = "projects-section" style="background-image: url({% static 'img/tatooine.jpg' %})">
+            <div class="container d-flex h-100 align-items-center">
+              <div class="mx-auto text-center">
+                <h4 style="color:white; font-size:200%">All Customers:</h4><br><br>
+              <table BGCOLOR="#FFFFCC"
+              cellspacing=20 CELLPADDING=10>
+                <tr style="border-bottom: 1px solid #ddd; padding: 15px">
+                    <th></th>
+                    <th>Name</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Phone</th> 
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    {% for customer in cust %}
+                    <tr style="border-bottom: 1px solid #ddd; padding: 15px">
+                    <td>
+                      <form action='{% url 'deleteCustomer' cust_id=customer.id %}'> 
+                        <button class="btn btn-primary js-scroll-trigger" style="background-color: #5F9EA0; color:white; border:none; padding: 15px 32px; text-decoration: none;display: inline-block; font-size: 16px;">Delete</button> 
+                      </form>
+                       
+                    </td>   
+                    <td>
+                        <!-- <form action='/travelpages/{{sName.id}}/'> 
+                        <button>{{ sName }} </button> 
+                        </form> -->
+                        <b>{{ customer.first_name}}  {{customer.last_name}}</b>
+                    </td> 
+                    <td>
+                      <b>{{ customer.user_name}}</b>
+                    </td>
+                    <td>
+                      <b>{{ customer.email}}</b>
+                    </td>
+                    <td>
+                      <b>{{ customer.phone}}</b>
+                    </td>
+                    <td>
+                      <form action='{% url 'customerinfo' cust_id=customer.id %}'> 
+                        <button class="btn btn-primary js-scroll-trigger" style="background-color: #5F9EA0; color:white; border:none; padding: 15px 32px; text-decoration: none;display: inline-block; font-size: 16px;">View Info</button> 
+                      </form>
+                    </td>
+                    <td>
+                      <form action='{% url 'updateCustomer' cust_id=customer.id %}'> 
+                        <button class="btn btn-primary js-scroll-trigger" style="background-color: #5F9EA0; color:white; border:none; padding: 15px 32px; text-decoration: none;display: inline-block; font-size: 16px;">Edit</button> 
+                      </form>
+                    </td>
+                  </tr>
+                </tr>
+                {% endfor %}
+                
+            </table>
+            <br><br>
+            <a class="btn btn-primary js-scroll-trigger" href="{% url 'addcust'%}">Add Customer</a>
+          </div>
+          </div>
+          </header>
+{% endblock %}

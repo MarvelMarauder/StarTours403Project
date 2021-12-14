@@ -308,6 +308,7 @@ p img, h1 img, h2 img, h3 img, h4 img, td img {
 table {
     border-collapse: collapse;
     border-color: var(--border-color);
+    border-spacing: 30px;
 }
 
 td, th {

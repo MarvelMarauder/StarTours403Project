@@ -1,0 +1,36 @@
+{%extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Customer Info-->
+     <section class="about-section text-center" id="about" style="background-image: url({% static 'img/space.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h4 class="text-white mb-4" style="font-size:400%">{{planet}}</h4>
+                    <p>
+                    <h3 class="text-white mb-4">Rotation Period: {{planet.rotation_period}}<br><br> 
+                            Orbital Period: {{planet.orbital_period}}<br><br>
+                            Diameter: {{planet.diameter}}<br><br>
+                            Climate: {{planet.climate  | title}}<br><br>
+                            Gravity: {{planet.gravity  | title}}<br><br>
+                            Terrain: {{planet.terrain  | title}}<br><br>
+                            Surface Water: {{planet.surface_water}}%<br><br>
+                            Population: {{planet.population}}<br><br>
+                            Characters Here: <br>
+                            {% for char in chars %}
+                            {{char.name}}<br> 
+                            <form action='{% url 'character' char_id=char.id %}'> 
+                                <button class="btn btn-primary js-scroll-trigger" style="background-color: #5F9EA0; color:white; border:none; padding: 15px 32px; text-decoration: none;display: inline-block; font-size: 16px;">View Character Info</button> 
+                            </form><br>                      
+                            
+                            {%endfor%}
+
+                        </h3><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

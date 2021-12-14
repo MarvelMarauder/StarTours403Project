@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime, timedelta
 
-from django.db.models.deletion import CASCADE
+from django.db.models.deletion import CASCADE, DO_NOTHING
 
 #there are a lot of null values for almost all of the fields in the data we've pulled off of the internet
 #we should create models that can accept null values
@@ -23,6 +23,7 @@ class TravelPlanet(models.Model):
     updated_date = models.DateTimeField(null=True)
     url = models.CharField(max_length=100, null=True)
     planetfakeid = models.CharField(max_length=20, null=True)
+    #main_photo = models.ImageField(upload_to='photos', null=True)
     # will have ID field and description field
 
     def __str__(self):
@@ -47,6 +48,20 @@ class Character(models.Model):
     def __str__(self):
         return (self.name) 
 
+class Trip(models.Model):
+    planet = models.ForeignKey(TravelPlanet, default="Tatooine", blank = False, on_delete=models.CASCADE)
+    duration = models.IntegerField()
+    dateDepart = models.DateTimeField(auto_now=False, auto_now_add=False)
+    cost = models.IntegerField()
+
+    def __str__(self):
+        return self.trip_name
+
+    @property
+    def trip_name(self) :
+        return '%s' % ("Trip to " + self.planet.name)
+
+
 class Customer(models.Model): #specify all of the attributes in the database
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -55,6 +70,8 @@ class Customer(models.Model): #specify all of the attributes in the database
     email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=13, blank=True)
     fav_character = models.ForeignKey(Character, default="Yoda", blank=True, on_delete=models.CASCADE)
+    cust_trips = models.ManyToManyField(Trip, blank=True, related_name='customer_trips')
+    #main_photo = models.ImageField(upload_to='photos', null=True)
 
     def __str__(self) : 
         return (self.full_name)
@@ -72,19 +89,6 @@ class Customer(models.Model): #specify all of the attributes in the database
         self.first_name = self.first_name.upper()
         self.last_name = self.last_name.upper()
         super(Customer, self).save() #call the original save method
-
-class Trip(models.Model):
-    planet = models.ForeignKey(TravelPlanet, default="Tatooine", blank = False, on_delete=models.CASCADE)
-    duration = models.IntegerField()
-    dateDepart = models.DateTimeField(auto_now=False, auto_now_add=False)
-
-    def __str__(self):
-        return self.trip_name
-
-    @property
-    def trip_name(self) :
-        return '%s' % ("Trip to " + self.planet.name)
-
 
 #make sure the travelsites app is referenced in the settings.py 
 

@@ -1,0 +1,71 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block content %}
+
+<header class="masthead" style="background-image: url({% static 'img/hyperspace1.jpg' %})">
+  <div class="container d-flex h-100 align-items-center">
+    <div class="mx-auto text-center" >
+      <h4 style="color:white; font-size:200%; padding-top:30%">Edit Customer</h4><br><br>
+                    <form name="form" method="post" action="{%url 'updatecust' %}" >       <!-- makes sure that the same person who filled out the form submits the form-->
+                      {% csrf_token %}
+
+                      <input type="hidden" id="id" name="id" value="{{cust.id}}">
+              
+                      <label style="color:white; font-size:125%" for='first_name'>First name:</label>
+                      <input style="float:right; width:200px" type="text" name="first_name" id='first_name' value="{{cust.first_name}}" autofocus>
+                      <br><br>
+              
+                      <label style="color:white; font-size:125%" for='last_name'>Last name:</label>
+                      <input style="float:right; width:200px" type="text" name='last_name' id='last_name' value="{{cust.last_name}}">
+                      <br><br>
+              
+                      <label style="color:white; font-size:125%" for='username'>User Name:</label>
+                      <input style="float:right; width:200px" type="text" name='username' id='username' value="{{cust.user_name}}">
+                      <br><br>
+              
+                      <label style="color:white; font-size:125%" for='password'>Password:</label>
+                      <input style="float:right; width:200px" type="text" name='password' id='password' value="{{cust.password}}">
+                      <br><br>
+            
+                      <label style="color:white; font-size:125%" for='email'>Email:</label>
+                      <input style="float:right; width:200px" type="text" name='email' id='email' value="{{cust.email}}">
+                      <br><br>
+              
+                      <label style="color:white; font-size:125%; padding-right:10px" for='phone'>Phone Number:</label>
+                      <input style="float:right; width:200px" type="text" name='phone' id='phone' value="{{cust.phone}}">
+                      <br><br>
+              
+                      <label style="color:white; font-size:125%" for='favchar'>Favorite Character:</label>
+                      <!-- <input type="text" name='favchar' id='favchar' value="{{cust.fav_character}}"> -->
+                      <select style="float:right; width:140px" name="favchar" id="favchar">
+                          <option value="{{cust.fav_character_id}}">{{cust.fav_character}}</option>
+                          {% for character in char %}
+                            <option value="{{character.id}}">{{character.name}}</option>
+                          {%endfor%}
+                      </select> 
+                      <br><br>  
+
+                      <label style="color:white; font-size:125%" for='trip'>Add Trip</label>
+                      <select style="float:right" name="trip" id="trip">
+                        <option value=''> -- Select a Trip -- </option>
+                        {% for atrip in trip %}
+                          <option value="{{atrip.id}}">{{atrip.planet}}</option>
+                        {%endfor%}
+                    </select> 
+                    <br><br> 
+                    
+                      <button class="btn btn-primary js-scroll-trigger" type="submit" style="background-color: #5F9EA0; color:white; border:none; padding: 15px 32px; text-decoration: none;display: inline-block; font-size: 16px;">Update</button> 
+                   
+                  </form>         
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <div>
+    
+      </div>
+  </section><!-- End Popular Courses Section -->
+
+  {% endblock %}

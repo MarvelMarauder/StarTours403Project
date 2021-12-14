@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+    
+    
+{%block content%}
+
+<div class="columnstuff" style="float: right; width: 50%">
+    <section class="projects-section" style="background-image: linear-gradient(black,white)" id="projects">
+            <div class="justify-content-center no-gutters">
+                <div class="col-lg-6 order-lg-second">
+                    <div class="bg-black text-center h-100 project">
+                        <div class="d-flex h-100">
+                            <div class="project-text w-100 my-auto text-center text-lg-right">
+                                <h4 class="text-white">Planets</h4>
+                                <p class="mb-0 text-white-50">A list of all planets in our database.</p>
+                                <hr class="d-none d-lg-block mb-0 mr-0" />
+                                <div class = "text-white">
+                                    <table>
+                                        <tr>
+                                            <form action = '{% url "searchplanet" %}'>
+                                                <label for='plan_name'>Planet Name:</label>
+                                                <input type="text" name='plan_name' id='plan_name'>
+                                                <br><br>
+                                                <button type="submit">Search</button>
+                                            </form>
+                                            <th>Name</th>
+                                            <th>Population</th>
+                                        </tr>
+                                        <tr>
+                                            {% for sPlanet in planets %}
+                                            <td>
+                                                <form action='{% url "planet" sPlanet.id %}'> 
+                                                <button>{{ sPlanet }} </button> 
+                                                </form>
+                                            </td> 
+                                            <td>
+                                                {{ sPlanet.population }}
+                                            </td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</div>
+<div style="float:right; width: 50%">
+    <section class="projects-section" style="background-image: linear-gradient(black,white)">
+            <div class="justify-content-center no-gutters">
+                <div class="col-lg-6 order-lg-second">
+                    <div class="bg-black text-center h-100 project">
+                        <div class="d-flex h-100">
+                            <div class="project-text w-100 my-auto text-center text-lg-right">
+                                <h4 class="text-white">Character List</h4>
+                                <p class="mb-0 text-white-50">A master list of all characters in our database.</p>
+                                <hr class="d-none d-lg-block mb-0 ml-0" />
+                                <div class = "text-white">
+                                <table>
+                                    <form action = '{% url "searchchar" %}'>
+                                        <label for='char_name'>Character Name:</label>
+                                        <input type="text" name='char_name' id='char_name'>
+                                        <br><br>
+                                        <label for='gender'>Character Gender:</label>
+                                        <select name="gender" id="genderbox">
+                                            <option value=''></option>
+                                            <option value="male">Male</option>   
+                                            <option value="female">Female</option>
+                                        </select><br><br>
+                                        <button type="submit">Search</button>
+                                    </form>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Home Planet</th>
+                                </tr>
+                                <tr>
+                                    {% for sName in characters %}
+                                    <td>
+                                        <form action='{% url "character" sName.id %}'> 
+                                        <button>{{ sName }} </button> 
+                                        </form>
+                                    </td> 
+                                    <td>
+                                        {{ sName.planet }}
+                                    </td>
+                                    </td>
+                                    
+                                </tr>
+                                {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</div>
+
+{% endblock content %}

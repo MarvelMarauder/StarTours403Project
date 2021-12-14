@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+            {% load static %}
+            {% block content %}
+                    <!-- Masthead-->
+                    <header class="masthead" style="background-image: url({% static 'img/deathstar.jpg' %})">
+                        <div class="container d-flex h-100 align-items-center" >
+                            <div class="mx-auto text-center">
+                                <h1 class="mx-auto my-0 text-uppercase">Star Trips</h1>
+                                <h2 class="text-white-50 mx-auto mt-2 mb-5">Your database of fast, available flights to take a vacation anywhere in the galaxy!</h2>
+                                <a class="btn btn-primary js-scroll-trigger" href="{% url 'travelpages'%}">See Our Trips!</a>
+                            </div>
+                        </div>
+                    </header>
+                    <!-- About-->
+                    <section class="about-section text-center" id="about">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 mx-auto">
+                                    <h2 class="text-white mb-4">Don't confuse us with Star Tours</h2>
+                                    <p class="text-white-50">
+                                        Star Trips guarantees no run ins with the Galactic Empire, the First Order, or like minded government entities. Our trips are chartered on retired Imperial Sentinel-Class Shuttles. We do NOT use droid to pilot our spacecraft. 
+                                    </p>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{% static 'img/ipad.png' }" alt="" />
+                        </div>
+                    </section>
+                    <!-- Projects-->
+                    <section class="projects-section bg-light" id="projects">
+                        <div class="container">
+                            <!-- Featured Project Row-->
+                            <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+                                <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'img/mustafar.jpg' %}" alt=""></div>
+                                <div class="col-xl-4 col-lg-5">
+                                    <div class="featured-text text-center text-lg-left">
+                                        <h4>Mustafar</h4>
+                                        <p class="text-black-50 mb-0">Mark your calendars! Mustafar will be added as a destination here at the start of the year. Travel to one of the hottest places in the galaxy. Be sure to use the promo code VADER-WAS-HERE when booking your trip to receive 30% off.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Project One Row-->
+                            <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+                                <div class="col-lg-6"><img class="img-fluid" src="{% static 'img/hoth.jpg' %}" alt="" /></div>
+                                <div class="col-lg-6">
+                                    <div class="bg-black text-center h-100 project">
+                                        <div class="d-flex h-100">
+                                            <div class="project-text w-100 my-auto text-center text-lg-left">
+                                                <h4 class="text-white">Hoth</h4>
+                                                <p class="mb-0 text-white-50">If you don't mind the cold, think about Hoth when planning your next adventure. A great holiday gift and famous for romantic honeymoons. Hop on a Tauntaun and head on over.</p>
+                                                <hr class="d-none d-lg-block mb-0 ml-0" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Project Two Row-->
+                            <div class="row justify-content-center no-gutters">
+                                <div class="col-lg-6"><img class="img-fluid" src="{% static 'img/tatooineCity.jpg' %}" alt="" /></div>
+                                <div class="col-lg-6 order-lg-first">
+                                    <div class="bg-black text-center h-100 project">
+                                        <div class="d-flex h-100">
+                                            <div class="project-text w-100 my-auto text-center text-lg-right">
+                                                <h4 class="text-white">Tatooine</h4>
+                                                <p class="mb-0 text-white-50">For all those who are looking to walk among the greats, we recommend a trip to Tatooine. Explore the planet where the respectable Skywalker family began and learn about the history of some of the characters that have shaped the galaxy.</p>
+                                                <hr class="d-none d-lg-block mb-0 mr-0" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                {% endblock %} 
